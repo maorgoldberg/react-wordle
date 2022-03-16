@@ -1,4 +1,4 @@
-import { WORDS } from '../constants/wordlist'
+import { WORDS, WORDS2 } from '../constants/wordlist'
 import { VALID_GUESSES } from '../constants/validGuesses'
 import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
@@ -83,7 +83,7 @@ export const getWordOfDay = () => {
   const nextday = (index + 1) * msInDay + epochMs
 
   return {
-    solution: [localeAwareUpperCase(WORDS[index % WORDS.length]),localeAwareUpperCase(WORDS[index + 1 % WORDS.length])],
+    solution: [localeAwareUpperCase(WORDS[index % WORDS.length]),localeAwareUpperCase(WORDS[index % WORDS2.length])],
     solutionIndex: index,
     tomorrow: nextday,
   }
