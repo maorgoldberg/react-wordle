@@ -43,11 +43,25 @@ export const Key = ({
   )
 
   const styles = {
-    transitionDelay: isRevealing ? `${keyDelayMs}ms` : 'unset',
     width: `${width}px`,
     height: '58px',
+    background: ''
+  }
+  if (status === 'split-r'){
+    styles['background'] = 'conic-gradient(rgb(30, 41, 59) 0deg, rgb(30, 41, 59) 90deg, rgb(30, 41, 59) 90deg, rgb(30, 41, 59) 180deg, rgb(0, 204, 136) 180deg, rgb(0, 204, 136) 270deg, rgb(0, 204, 136) 270deg, rgb(0, 204, 136) 360deg)'
   }
 
+  if (status === 'split-l'){
+    styles['background'] = 'conic-gradient(rgb(0, 204, 136) 0deg, rgb(0, 204, 136) 90deg, rgb(0, 204, 136) 90deg, rgb(0, 204, 136) 180deg, rgb(30, 41, 59) 180deg, rgb(30, 41, 59) 270deg, rgb(30, 41, 59) 270deg, rgb(30, 41, 59) 360deg)'
+  }
+
+  if (status === 'p-split-r'){
+    styles['background'] = 'conic-gradient(rgb(255, 204, 0) 0deg, rgb(255, 204, 0) 90deg, rgb(255, 204, 0) 90deg, rgb(255, 204, 0) 180deg, rgb(0, 204, 136) 180deg, rgb(0, 204, 136) 270deg, rgb(0, 204, 136) 270deg, rgb(0, 204, 136) 360deg)'
+  }
+
+  if (status === 'p-split-l'){
+    styles['background'] = 'conic-gradient(rgb(0, 204, 136) 0deg, rgb(0, 204, 136) 90deg, rgb(0, 204, 136) 90deg, rgb(0, 204, 136) 180deg, rgb(255, 204, 0) 180deg, rgb(255, 204, 0) 270deg, rgb(255, 204, 0) 270deg, rgb(255, 204, 0) 360deg)'
+  }
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     onClick(value)
     event.currentTarget.blur()

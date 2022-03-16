@@ -19,7 +19,8 @@ export const Keyboard = ({
   guesses,
   isRevealing,
 }: Props) => {
-  const charStatuses = getStatuses(guesses)
+  const charStatuses = getStatuses(guesses, 0)
+  const charStatuses2 = getStatuses(guesses, 1)
 
   const onClick = (value: string) => {
     if (value === 'ENTER') {
@@ -54,7 +55,7 @@ export const Keyboard = ({
   return (
     <div>
       <div className="flex justify-center mb-1">
-        {['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map((key) => (
+        {['פ', 'ם', 'ן' ,'ו', 'ט', 'א', 'ר', 'ק'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -65,7 +66,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'].map((key) => (
+        {['ף', 'ך', 'ל', 'ח', 'י', 'ע', 'כ', 'ג', 'ד', 'ש'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -79,7 +80,7 @@ export const Keyboard = ({
         <Key width={65.4} value="ENTER" onClick={onClick}>
           {ENTER_TEXT}
         </Key>
-        {['Z', 'X', 'C', 'V', 'B', 'N', 'M'].map((key) => (
+        {['ץ', 'ת', 'צ', 'מ', 'נ', 'ה', 'ב', 'ס', 'ז'].map((key) => (
           <Key
             value={key}
             key={key}

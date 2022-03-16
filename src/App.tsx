@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Grid } from './components/grid/Grid'
+import { Grid2 } from './components/grid2/Grid'
 import { Keyboard } from './components/keyboard/Keyboard'
 import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
@@ -67,10 +68,12 @@ function App() {
   const [isRevealing, setIsRevealing] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
-    if (loaded?.solution !== solution) {
+    if (loaded?.solution[0] !== solution[0]) {
       return []
     }
-    const gameWasWon = loaded.guesses.includes(solution)
+    const gameWasWon =
+      loaded.guesses.includes(solution[0]) &&
+      loaded.guesses.includes(solution[1])
     if (gameWasWon) {
       setIsGameWon(true)
     }
@@ -214,7 +217,7 @@ function App() {
       setIsRevealing(false)
     }, REVEAL_TIME_MS * MAX_WORD_LENGTH)
 
-    const winningWord = isWinningWord(currentGuess)
+    const winningWord = isWinningWord(guesses.concat(currentGuess))
 
     if (
       unicodeLength(currentGuess) === MAX_WORD_LENGTH &&
@@ -248,13 +251,23 @@ function App() {
         setIsSettingsModalOpen={setIsSettingsModalOpen}
       />
       <div className="pt-2 px-1 pb-8 md:max-w-7xl w-full mx-auto sm:px-6 lg:px-8 flex flex-col grow">
-        <div className="pb-6 grow">
-          <Grid
-            guesses={guesses}
-            currentGuess={currentGuess}
-            isRevealing={isRevealing}
-            currentRowClassName={currentRowClass}
-          />
+        <div className="pt-16 pb-6 grow md:flex md:flex-col-2">
+          <div className="pb-6 grow">
+            <Grid
+              guesses={guesses}
+              currentGuess={currentGuess}
+              isRevealing={isRevealing}
+              currentRowClassName={currentRowClass}
+            />
+          </div>
+          <div className="pb-6 grow">
+            <Grid2
+              guesses={guesses}
+              currentGuess={currentGuess}
+              isRevealing={isRevealing}
+              currentRowClassName={currentRowClass}
+            />
+          </div>
         </div>
         <Keyboard
           onChar={onChar}

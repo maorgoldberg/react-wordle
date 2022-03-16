@@ -45,18 +45,18 @@ export const shareStatus = (
 export const generateEmojiGrid = (guesses: string[], tiles: string[]) => {
   return guesses
     .map((guess) => {
-      const status = getGuessStatuses(guess)
+      const status = getGuessStatuses(guess,0).concat(getGuessStatuses(guess,1))
       const splitGuess = unicodeSplit(guess)
 
       return splitGuess
         .map((_, i) => {
           switch (status[i]) {
             case 'correct':
-              return tiles[0]
+              return '\u202E'+tiles[0]
             case 'present':
-              return tiles[1]
+              return '\u202E'+tiles[1]
             default:
-              return tiles[2]
+              return '\u202E'+tiles[2]
           }
         })
         .join('')
