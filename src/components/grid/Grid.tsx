@@ -35,7 +35,7 @@ export const Grid = ({
     <>
       {guesses.map((guess, i) => {
         if(guesses.includes(solution[0]) && i > guesses.indexOf(solution[0])){
-          return
+          return null
         } else {
           return (<CompletedRow
             key={i}
