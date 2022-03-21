@@ -40,7 +40,7 @@ export const Keyboard = ({
       } else {
         const key = localeAwareUpperCase(e.key)
         // TODO: check this test if the range works with non-english letters
-        if (key.length === 1 && key >= 'A' && key <= 'Z') {
+        if (key.length === 1 && key >= 'א' && key <= 'ת') {
           onChar(key)
         }
       }
