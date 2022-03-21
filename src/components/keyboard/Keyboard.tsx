@@ -52,7 +52,7 @@ export const Keyboard = ({
   }, [onEnter, onDelete, onChar])
 
   return (
-    <div>
+    <div className="sticky bottom-0 bg-white dark:bg-slate-900">
       <div className="flex justify-center mb-1">
         {['פ', 'ם', 'ן' ,'ו', 'ט', 'א', 'ר', 'ק'].map((key) => (
           <Key
